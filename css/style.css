@@ -27,9 +27,7 @@ header h1{
   text-shadow:0 0 28px rgba(255,255,255,.55);
 }
 
-/* ===========================
-   Hyllor – endast hylla 1
-   =========================== */
+/* Hylla  */
 .shelves{
   width:100%;
   display:grid;
@@ -129,29 +127,6 @@ header h1{
     drop-shadow(0 26px 72px rgba(0,0,0,.95))
     drop-shadow(0 0 120px rgba(255,70,70,.35));
 }
-
-/* Röda glödande ögon (pulsar) */
-.skull-img::before,
-.skull-img::after{
-  content:"";
-  position:absolute;
-  top:44%;
-  width:18px; height:18px;
-  border-radius:50%;
-  background:radial-gradient(circle at 50% 55%, #ff5a5a 0%, #d10000 58%, rgba(209,0,0,0) 72%);
-  box-shadow:0 0 12px rgba(255,60,60,.95), 0 0 26px rgba(255,40,40,.6);
-  transform:translate(-50%,-50%);
-  animation:eyePulse 1.8s ease-in-out infinite;
-  pointer-events:none;
-}
-.skull-img::before{ left:44%; }
-.skull-img::after { left:56%; }
-
-@keyframes eyePulse{
-  0%,100%{ transform:translate(-50%,-50%) scale(1); filter:brightness(1); }
-  50%    { transform:translate(-50%,-50%) scale(1.18); filter:brightness(1.35); }
-}
-
 /* CTA – visas under skallen */
 .cta{
   position:absolute;
