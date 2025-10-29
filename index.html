@@ -1,80 +1,45 @@
 <!doctype html>
 <html lang="sv">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kaffebaren ☕ – Hot & Cold</title>
-
-  <!-- Länk till CSS -->
-  <link rel="stylesheet" href="css/style.css" />
-
-  <meta name="description" content="Beställ och upptäck kaffe – varmt eller kallt!">
-  <meta property="og:title" content="Kaffebaren – Hot & Cold" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://via.placeholder.com/800x500?text=Coffee" />
-  <meta name="theme-color" content="#6b4f1d" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Old Library</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-<header>
-  <h1>Kaffebaren ☕</h1>
-  <p>Utforska och beställ gott kaffe – välj varmt eller kallt, sök och lägg i kundvagnen!</p>
+
+<header class="hero">
+  <h1>Old Library</h1>
 </header>
+<main class="shelves">
+  <!-- Endast Hylla 1 -->
+  <section class="shelf">
+    <div class="books">
+      <!-- 2 böcker till vänster -->
+      <div class="book"></div>
+      <div class="book"></div>
 
-<!-- Filter och sökning -->
-<nav aria-label="Filter och sökning">
-  <div>
-    <button id="hotBtn" type="button" aria-pressed="true">🔥 Hot</button>
-    <button id="coldBtn" type="button" aria-pressed="false">❄️ Cold</button>
-  </div>
+      <!-- Stor skalle i mitten -->
+      <div class="skull-wrap">
+        <img src="img/skull.webp" alt="Skull" class="skull-img">
+        <a href="books.html" class="cta">Find Books</a>
+      </div>
 
-  <div>
-    <label for="search">Sök</label>
-    <input id="search" type="search" placeholder="Sök efter kaffe eller ingrediens…" />
-  </div>
-
-  <div>
-    <label for="sort">Sortera</label>
-    <select id="sort">
-      <option value="title-asc">Namn A–Ö</option>
-      <option value="title-desc">Namn Ö–A</option>
-      <option value="price-asc">Pris lägst–högst</option>
-      <option value="price-desc">Pris högst–lägst</option>
-    </select>
-  </div>
-</nav>
-
-<!-- Huvudinnehåll -->
-<main>
-  <section aria-live="polite">
-    <div id="status" hidden>Laddar…</div>
-    <div id="coffee-list" aria-busy="false"></div>
+      <!-- Levande ljus längst till höger -->
+      <div class="candle" aria-hidden="true">
+        <em></em>
+      </div>
+    </div>
   </section>
-
-  <!-- Kundvagn -->
-  <aside aria-label="Kundvagn">
-    <h2>Kundvagn</h2>
-    <div id="cart-items"></div>
-    <div id="cart-empty">Din kundvagn är tom.</div>
-    <hr />
-    <p><strong>Summa:</strong> <span id="cart-total">0 kr</span></p>
-    <button id="checkoutBtn" type="button">Beställ</button>
-    <div id="checkout-msg" hidden>Tack för din beställning! ✨</div>
-  </aside>
 </main>
 
+
+
+
 <footer>
-  <small>
-    Data från <a href="https://api.sampleapis.com/coffee" target="_blank" rel="noreferrer">Sample APIs – Coffee</a>
-    • Skapad av Tina ☕
-  </small>
+  <p>© Old Library</p>
 </footer>
 
-<!-- Länk till JavaScript -->
-<script src="js/app.js"></script>
-
+<script src="js/js/app.js"></script>
 </body>
 </html>
-
-
-
