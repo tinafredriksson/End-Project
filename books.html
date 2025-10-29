@@ -4,78 +4,63 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Old Library — Books</title>
-  <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* Lätt layout för resultat (behåller din mörka stil) */
-    .toolbar{max-width:1100px;margin:20px auto;display:flex;gap:12px;justify-content:center}
+    body{background:#0b0b0b;color:#f7f1e6;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0}
+    header{padding:32px 16px;text-align:center}
+    h1{margin:0;font-size:48px;text-shadow:0 0 30px #fff2}
+    .toolbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:0 16px}
     .toolbar input,.toolbar select,.toolbar button{padding:10px 12px;border-radius:8px;border:1px solid #333;background:#0f0f0f;color:#f7f1e6}
     .toolbar button{background:#b91c1c;border-color:#b91c1c;cursor:pointer}
-    .results{max-width:1100px;margin:18px auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
-    .card{background:#0b0b0b;border:1px solid #222;border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+    #status{text-align:center;opacity:.8;margin:14px 0;min-height:1.2em}
+    #results{max-width:900px;margin:20px auto;padding:0 16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+    .card{background:#0b0b0b;border:1px solid #222;border-radius:12px;overflow:hidden}
     .card img{width:100%;height:240px;object-fit:cover;background:#000}
-    .card .body{padding:10px 12px;display:flex;flex-direction:column;gap:6px}
-    .card .title{font-weight:700}
-    .card .meta{opacity:.8;font-size:.9rem}
-    .status{text-align:center;margin:14px 0;opacity:.8}
-    .pager{display:flex;gap:10px;justify-content:center;margin:20px 0}
-    .pager button{padding:10px 14px;border-radius:999px;border:1px solid #333;background:#0f0f0f;color:#f7f1e6;cursor:pointer}
-    .pager button.primary{background:#b91c1c;border-color:#b91c1c}
-    .empty{text-align:center;opacity:.7;margin:24px 0}
+    .body{padding:10px}
+    .title{font-weight:700}
+    .meta{opacity:.8;font-size:.9rem}
   </style>
 </head>
 <body>
 
-<header class="hero">
+<header>
   <h1>Find Books</h1>
 </header>
-</nav>
-<nav class="toolbar" aria-label="Sök och filter">
-  <input id="q" type="search" placeholder="Sök titel, författare, ämne…">
-  <select id="age">
-    <option value="">Alla åldrar</option>
-    <option value="kids">Barn</option>
+
+<nav class="toolbar" aria-label="Sök">
+  <input id="q" type="search" placeholder="Sök titel, författare, ämne…" />
+
+  <!-- 🔥 ÅLDERSFILTER -->
+  <select id="ageFilter">
+    <option value="all">Alla åldrar</option>
+    <option value="children">Barn</option>
     <option value="ya">Young Adult</option>
     <option value="adult">Vuxna</option>
   </select>
 
-  <!-- NYTT: sortering -->
-  <select id="sort">
-    <option value="">Relevans</option>
-    <option value="new">Nyast</option>
-    <option value="old">Äldst</option>
-    <option value="random">Slump</option>
-    <option value="key">Nyckel (alfabetisk)</option>
+  <!-- 🎭 GENRE-FILTER -->
+  <select id="genreFilter">
+    <option value="all">Alla genrer</option>
+    <option value="Fantasy">Fantasy</option>
+    <option value="Science Fiction">Science Fiction</option>
+    <option value="Mystery">Mystery</option>
+    <option value="Romance">Romance</option>
+    <option value="Horror">Horror</option>
+    <option value="History">History</option>
+    <option value="Biography">Biography</option>
+    <option value="Children">Children's</option>
+    <option value="Young Adult">Young Adult</option>
   </select>
-
-  <!-- NYTT: språkpreferens -->
-  <select id="lang">
-    <option value="">Språk (alla)</option>
-    <option value="en">English</option>
-    <option value="sv">Svenska</option>
-    <option value="fr">Français</option>
-    <option value="de">Deutsch</option>
-    <option value="es">Español</option>
-  </select>
-
-  <!-- NYTT: availability -->
-  <label style="display:flex;align-items:center;gap:.4rem;">
-    <input id="avail" type="checkbox"> availability
-  </label>
 
   <button id="searchBtn" type="button">Sök</button>
 </nav>
 
+<p id="status"></p>
+<section id="results"></section>
 
-<p id="status" class="status" hidden>Laddar…</p>
-
-<section id="results" class="results" aria-live="polite"></section>
-
-<div class="pager">
-  <button id="prevBtn" type="button">◀ Föregående</button>
-  <button id="nextBtn" type="button" class="primary">Nästa ▶</button>
-</div>
-
+<!-- RÄTT sökväg: ENDA scriptet -->
 <script src="js/js/books.js"></script>
 </body>
 </html>
+
+
 
