@@ -1,4 +1,4 @@
-//
+//styr funktionen av knappen på döskallen//
 document.addEventListener('keydown', (e) => {
   const wrap = document.querySelector('.skull-wrap');
   if (!wrap) return;

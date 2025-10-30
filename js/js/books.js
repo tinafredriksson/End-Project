@@ -1,6 +1,6 @@
-// ✅ Drop-in books.js — sök + (valfritt) genre- & åldersfilter, robust fetch
+// startmeddelande /robust fetch
 console.log("✅ books.js loaded");
-
+//Hämtar element från HTML//
 const els = {
   q: document.getElementById("q"),
   btn: document.getElementById("searchBtn"),
@@ -9,17 +9,17 @@ const els = {
   age: document.getElementById("ageFilter"),      // optional
   genre: document.getElementById("genreFilter"),  // optional
 };
-
+// lagrar det senaste sökresultatet//
 let lastDocs = [];
 
-// ---- Helpers ----
+// Funktion för att skapa bokomslag//
 function coverUrl(d) {
   if (d.cover_i) return `https://covers.openlibrary.org/b/id/${d.cover_i}-M.jpg`;
   if (d.cover_edition_key) return `https://covers.openlibrary.org/b/olid/${d.cover_edition_key}-M.jpg`;
   return "https://placehold.co/300x440?text=No+Cover";
 }
 
-// Ålders-heuristik via subject (fung. även om #ageFilter saknas)
+// Åldersfilter-funktion//
 function fitsAge(d, ageVal) {
   if (!ageVal || ageVal === "all") return true;
   const subj = (d.subject || []).map(s => String(s).toLowerCase());
@@ -30,13 +30,13 @@ function fitsAge(d, ageVal) {
   if (ageVal === "adult") return !isChild && !isYA;
   return true;
 }
-
+// Använder åldersfiltret//
 function applyFilters(docs) {
   const ageVal = els.age?.value || "all";
   return docs.filter(d => fitsAge(d, ageVal));
 }
 
-// Bygg en trygg query: fras + ev. subject:"Genre" (om #genreFilter finns)
+// skapar sökfrågan som skickas till API//
 function buildQuery(qInput) {
   const base = (qInput && qInput.trim()) ? qInput.trim() : "the"; // bred & säker default
   const parts = [base];
@@ -44,7 +44,7 @@ function buildQuery(qInput) {
   if (g && g !== "all") parts.push(`subject:"${g}"`);
   return parts.join(" ");
 }
-
+// Visar resultat i HTML//
 function render(docs) {
   els.results.innerHTML = (docs || []).map(d => `
     <article class="card">
@@ -57,7 +57,7 @@ function render(docs) {
   `).join("") || `<p style="text-align:center;opacity:.7">Inga resultat.</p>`;
 }
 
-// ---- Fetch & render ----
+// Hämtar böcker från APIT openlibrary//
 async function searchBooks(qInput) {
   const q = buildQuery(qInput);
   const url = `https://openlibrary.org/search.json` +
@@ -84,15 +84,14 @@ async function searchBooks(qInput) {
   }
 }
 
-// ---- Events ----
+// kopplar knappar och fält//
 els.btn?.addEventListener("click", () => searchBooks(els.q?.value));
 els.q?.addEventListener("keydown", e => { if (e.key === "Enter") searchBooks(els.q.value); });
 els.age?.addEventListener("change", () => render(applyFilters(lastDocs)));
 els.genre?.addEventListener("change", () => searchBooks(els.q?.value));
 
-// ---- Initial load ----
-// Starta med "dragon" (bevisat funkar hos dig). Tomt fält använder "the".
-searchBooks("dragon");
+// första sökningen som visas direkt på sidan,denna kan ändras till annan specifikation ex: hospital//
+searchBooks("Dragon");
 
 
 

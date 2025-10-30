@@ -1,6 +1,4 @@
-/* =====================================
-   OLD LIBRARY – SINGLE SHELF LAYOUT
-   ===================================== */
+/* OLD LIBRARY – SINGLE SHELF LAYOUT */
 :root{
   --bg:#000;
   --panel:#000;         /* hyllans panel – helsvart */
@@ -63,9 +61,7 @@ header h1{
   gap:22px; min-height:240px;
 }
 
-/* ===========================
-   2 Böcker till vänster
-   =========================== */
+/* 2 Böcker till vänster */
 .book{
   width:64px; height:190px;
   background:linear-gradient(var(--book), #770f14);
@@ -77,15 +73,13 @@ header h1{
   transform:translateY(-2px) rotate(-1deg);
 }
 
-/* ===========================
-   STOR SKALLE – centrerad & lysande
-   =========================== */
+/* STOR SKALLE – centrerad & lysande */
 .skull-wrap{
   position:absolute;
   left:50%;
-  bottom:calc(var(--ledgeH) + var(--ledgeGap)); /* står på hyllplanet */
+  bottom:calc(var(--ledgeH) + var(--ledgeGap));
   transform:translateX(-50%);
-  width:560px;        /* yta runt skallen */
+  width:560px;
   height:380px;
   display:flex; justify-content:center; align-items:flex-end;
   cursor:pointer; z-index:2;
@@ -94,7 +88,7 @@ header h1{
 /* själv bilden */
 .skull-img{
   position:relative;
-  width:480px;        /* STOR bild */
+  width:480px;
   height:auto;
   object-fit:contain;
   filter:
@@ -141,9 +135,7 @@ header h1{
   opacity:1; pointer-events:auto; transform:translateX(-50%) translateY(0);
 }
 
-/* ===========================
-   LEVANDE LJUS – längst till höger
-   =========================== */
+/* LEVANDE LJUS – längst till höger */
 .candle{
   position:absolute;
   right:32px;
@@ -168,7 +160,5 @@ header h1{
   50%    { transform:translateX(-50%) scale(1.16); opacity:.65; }
 }
 
-/* ===========================
-   Footer
-   =========================== */
+/* Footer */
 footer{ margin-top:54px; opacity:.55; font-size:.95rem; }
