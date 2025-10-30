@@ -26,4 +26,5 @@ in för mycket data. Jag valde att specificera förstasidan man möts av
 till ett specifikt sökord för att begränsa in-datan. Sökordet kan ändras
 till tex hospital eller lämnas tomt. Om fältet lämnas tomt kommer
 den köra default och istället hämta information från sökordet "the"
-som är uppbyggt i buildQuery.
+som är uppbyggt i buildQuery.Antalet som visas är filtrerat till
+att visa 24 stycken böcker.
